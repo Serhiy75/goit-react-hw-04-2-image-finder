@@ -1,7 +1,7 @@
-export const ImageGalleryItem = () => {
+export const ImageGalleryItem = ({ webformatURL, tags, onClick }) => {
   return (
-    <li class="gallery-item">
-      <img src="" alt="" />
+    <li className="gallery-item" onClick={onClick}>
+      <img width="250px" src={webformatURL} alt={tags} />
     </li>
   );
 };

@@ -1,8 +1,8 @@
-export const Modal = () => {
+export const Modal = ({ largeImageURL, tags }) => {
   return (
-    <div class="overlay">
-      <div class="modal">
-        <img src="" alt="" />
+    <div className="Overlay">
+      <div className="Modal">
+        <img src={largeImageURL} alt={tags} />
       </div>
     </div>
   );

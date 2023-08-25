@@ -1,3 +1,40 @@
-export const ImageGallery = () => {
-  return <ul class="gallery"></ul>;
-};
+import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { Modal } from 'components/Modal/Modal';
+import { Component } from 'react';
+export class ImageGallery extends Component {
+  state = {
+    isModalShow: false,
+  };
+
+  largeImageURL = '';
+  tags = '';
+
+  handleToggle = (largeImageURL, tags) => {
+    this.setState(prevState => ({
+      isModalShow: !prevState.isModalShow,
+    }));
+    this.largeImageURL = largeImageURL;
+    this.tags = tags;
+  };
+
+  render() {
+    const { hits } = this.props;
+    return (
+      <>
+        <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          {hits.map(({ id, webformatURL, tags, largeImageURL }) => (
+            <ImageGalleryItem
+              onClick={() => this.handleToggle(largeImageURL, tags)}
+              webformatURL={webformatURL}
+              tags={tags}
+              key={id}
+            />
+          ))}
+        </ul>
+        {this.state.isModalShow && (
+          <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
+        )}
+      </>
+    );
+  }
+}
