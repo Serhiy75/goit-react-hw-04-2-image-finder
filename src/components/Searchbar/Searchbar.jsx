@@ -18,19 +18,19 @@ export class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.hendleSubmit}>
+      <header className="Searchbar">
+        <form className="Searchform" onSubmit={this.hendleSubmit}>
           <input
-            className="input"
+            className="SearchForminput"
             value={this.state.text}
             type="text"
             onChange={this.hendleChange}
-            // autocomplete="off"
-            // autofocus
+            autocomplete="off"
+            autofocus
             placeholder="Search images and photos"
           />
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+          <button type="submit" className="SearchFormbutton ">
+            <span className="SearchFormbutton-label ">Search</span>
           </button>
         </form>
       </header>

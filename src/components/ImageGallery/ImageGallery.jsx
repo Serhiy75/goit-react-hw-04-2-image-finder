@@ -1,6 +1,8 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
+
 export class ImageGallery extends Component {
   state = {
     isModalShow: false,
@@ -13,6 +15,7 @@ export class ImageGallery extends Component {
     this.setState(prevState => ({
       isModalShow: !prevState.isModalShow,
     }));
+
     this.largeImageURL = largeImageURL;
     this.tags = tags;
   };
@@ -21,7 +24,7 @@ export class ImageGallery extends Component {
     const { hits } = this.props;
     return (
       <>
-        <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <ul class="ImageGallery">
           {hits.map(({ id, webformatURL, tags, largeImageURL }) => (
             <ImageGalleryItem
               onClick={() => this.handleToggle(largeImageURL, tags)}
@@ -34,7 +37,14 @@ export class ImageGallery extends Component {
         {this.state.isModalShow && (
           <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
         )}
+        <Loader />
       </>
     );
   }
 }
+// style={{
+//   display: 'flex',
+//   flexWrap: 'wrap',
+//   gap: '8px',
+//   listStyle: 'none',
+// }}

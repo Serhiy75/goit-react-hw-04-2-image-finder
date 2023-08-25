@@ -3,6 +3,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Component } from 'react';
 import { getImages } from '../FetchApi/FetchApi.jsx';
+
 export class App extends Component {
   state = {
     hits: [],
@@ -36,7 +37,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <header className="searchbar">
+        <header className="App">
           <Searchbar onChangeQuery={this.hendleChengQuery} />
         </header>
 
