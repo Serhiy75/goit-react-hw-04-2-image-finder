@@ -1,3 +1,5 @@
+// import PropTypes from 'prop-types';
+
 export const Modal = ({ largeImageURL, tags }) => {
   return (
     <div className="Overlay">

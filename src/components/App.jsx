@@ -4,6 +4,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { Component } from 'react';
 import { getImages } from '../FetchApi/FetchApi.jsx';
 import { Loader } from './Loader/Loader';
+
 export class App extends Component {
   state = {
     hits: [],

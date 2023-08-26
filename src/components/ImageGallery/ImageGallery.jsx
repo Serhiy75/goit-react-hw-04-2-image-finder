@@ -1,4 +1,5 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
 
@@ -36,7 +37,7 @@ export class ImageGallery extends Component {
         {this.state.isModalShow && (
           <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
         )}
-        {/* <Loader /> */}
+        <Loader />
       </>
     );
   }
