@@ -1,12 +1,10 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-// import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
 
 export class ImageGallery extends Component {
   state = {
     isModalShow: false,
-    // isLoading: true,
   };
 
   largeImageURL = '';
@@ -43,9 +41,3 @@ export class ImageGallery extends Component {
     );
   }
 }
-// style={{
-//   display: 'flex',
-//   flexWrap: 'wrap',
-//   gap: '8px',
-//   listStyle: 'none',
-// }}
