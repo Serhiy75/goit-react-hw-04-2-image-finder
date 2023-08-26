@@ -25,9 +25,9 @@ export class Searchbar extends Component {
             value={this.state.text}
             type="text"
             onChange={this.hendleChange}
-            autocomplete="off"
-            autofocus
-            placeholder="Search images and photos"
+            // autocomplete="off"
+            // autofocus
+            // placeholder="Search images and photos"
           />
           <button type="submit" className="SearchFormbutton ">
             <span className="SearchFormbutton-label ">Search</span>

@@ -3,7 +3,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Component } from 'react';
 import { getImages } from '../FetchApi/FetchApi.jsx';
-
+import { Loader } from './Loader/Loader';
 export class App extends Component {
   state = {
     hits: [],
@@ -41,7 +41,7 @@ export class App extends Component {
           <Searchbar onChangeQuery={this.hendleChengQuery} />
         </header>
 
-        <ImageGallery hits={this.state.hits} />
+        {<Loader /> && <ImageGallery hits={this.state.hits} />}
         {this.canLoadMore && <Button handleClick={this.handleChangePage} />}
       </>
     );

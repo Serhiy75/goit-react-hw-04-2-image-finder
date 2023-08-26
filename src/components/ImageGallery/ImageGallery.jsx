@@ -1,11 +1,12 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
 
 export class ImageGallery extends Component {
   state = {
     isModalShow: false,
+    // isLoading: true,
   };
 
   largeImageURL = '';
@@ -24,7 +25,7 @@ export class ImageGallery extends Component {
     const { hits } = this.props;
     return (
       <>
-        <ul class="ImageGallery">
+        <ul className="ImageGallery">
           {hits.map(({ id, webformatURL, tags, largeImageURL }) => (
             <ImageGalleryItem
               onClick={() => this.handleToggle(largeImageURL, tags)}
@@ -37,7 +38,7 @@ export class ImageGallery extends Component {
         {this.state.isModalShow && (
           <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
         )}
-        <Loader />
+        {/* <Loader /> */}
       </>
     );
   }
