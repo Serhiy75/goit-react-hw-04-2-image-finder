@@ -1,7 +1,7 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-// import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ImageGallery extends Component {
   state = {
@@ -34,10 +34,17 @@ export class ImageGallery extends Component {
           ))}
         </ul>
         {this.state.isModalShow && (
-          <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
+          <Modal
+            largeImageURL={this.largeImageURL}
+            tags={this.tags}
+            closeModal={this.handleToggle}
+          />
         )}
-        {/* <Loader /> */}
       </>
     );
   }
 }
+
+ImageGallery.propTypes = {
+  hits: PropTypes.array.isRequired,
+};

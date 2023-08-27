@@ -10,7 +10,7 @@ export class App extends Component {
     hits: [],
     q: '',
     page: 1,
-    isLoading: true,
+    isLoading: false,
     isEmpty: false,
     showBtn: false,
   };
@@ -31,7 +31,7 @@ export class App extends Component {
           }));
         })
         .catch(error => {
-          this.setState({ isError: error.message });
+          this.setState({ isError: error.message, isLoading: false });
         });
     }
   }
@@ -39,11 +39,18 @@ export class App extends Component {
   handleChangePage = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
+      isLoading: true,
     }));
   };
 
   hendleChengQuery = query => {
-    this.setState({ q: query, page: 1, hits: [], isEmpty: false });
+    this.setState({
+      q: query,
+      page: 1,
+      hits: [],
+      isEmpty: false,
+      isLoading: true,
+    });
   };
 
   render() {
