@@ -1,15 +1,14 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
 
 export class ImageGallery extends Component {
   state = {
     isModalShow: false,
+    largeImageURL: '',
+    tags: '',
   };
-
-  largeImageURL = '';
-  tags = '';
 
   handleToggle = (largeImageURL, tags) => {
     this.setState(prevState => ({
@@ -37,7 +36,7 @@ export class ImageGallery extends Component {
         {this.state.isModalShow && (
           <Modal largeImageURL={this.largeImageURL} tags={this.tags} />
         )}
-        <Loader />
+        {/* <Loader /> */}
       </>
     );
   }

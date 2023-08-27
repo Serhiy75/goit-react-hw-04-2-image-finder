@@ -10,21 +10,32 @@ export class App extends Component {
     hits: [],
     q: '',
     page: 1,
+    isLoading: true,
+    isEmpty: false,
+    showBtn: false,
   };
-
-  canLoadMore = false;
 
   componentDidUpdate(_, prevState) {
     const { q, page } = this.state;
     if (q !== prevState.q || page !== prevState.page) {
-      getImages(q, page).then(({ hits, totalHits }) => {
-        this.setState(prevState => ({
-          hits: [...prevState.hits, ...hits],
-        }));
-        this.canLoadMore = Math.ceil(totalHits / 12) > page;
-      });
+      getImages(q, page)
+        .then(({ hits, totalHits }) => {
+          if (!totalHits) {
+            this.setState({ isEmpty: true });
+            return;
+          }
+          this.setState(prevState => ({
+            isLoading: false,
+            hits: [...prevState.hits, ...hits],
+            showBtn: page < Math.ceil(totalHits / 12),
+          }));
+        })
+        .catch(error => {
+          this.setState({ isError: error.message });
+        });
     }
   }
+
   handleChangePage = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
@@ -32,18 +43,22 @@ export class App extends Component {
   };
 
   hendleChengQuery = query => {
-    this.setState({ q: query, page: 1, hits: [] });
+    this.setState({ q: query, page: 1, hits: [], isEmpty: false });
   };
 
   render() {
+    const { isEmpty, showBtn, isError, isLoading } = this.state;
     return (
       <>
         <header className="App">
           <Searchbar onChangeQuery={this.hendleChengQuery} />
         </header>
 
-        {<Loader /> && <ImageGallery hits={this.state.hits} />}
-        {this.canLoadMore && <Button handleClick={this.handleChangePage} />}
+        {isLoading && <Loader />}
+        {this.state.hits.length > 0 && <ImageGallery hits={this.state.hits} />}
+        {showBtn && <Button handleClick={this.handleChangePage} />}
+        {isEmpty && <p className="Paragraf">Sorry we nothing find...</p>}
+        {isError && <p className="Error"> {isError} Something is wrong</p>}
       </>
     );
   }
