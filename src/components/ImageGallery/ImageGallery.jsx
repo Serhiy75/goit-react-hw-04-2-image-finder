@@ -13,6 +13,8 @@ export class ImageGallery extends Component {
   handleToggle = (largeImageURL, tags) => {
     this.setState(prevState => ({
       isModalShow: !prevState.isModalShow,
+      //  largeImageURL,
+      //  tags,
     }));
 
     this.largeImageURL = largeImageURL;
