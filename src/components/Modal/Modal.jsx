@@ -1,6 +1,22 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 
+// import { useEffect } from 'react';
+
+// export const Modal = ({ closeModal, src, alt }) => {
+//   useEffect(() => {
+//     const handleEscape = e => {
+//       if (e.key === 'Escape') {
+//         closeModal({ src: '', alt: '' });
+//       }
+//     };
+//     window.addEventListener('keydown', this.handleEscape);
+//     return () => {
+//       window.removeEventListener('keydown', this.handleEscape);
+//     };
+//   }, [closeModal]);
+// };
+
 export class Modal extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.handleEscape);

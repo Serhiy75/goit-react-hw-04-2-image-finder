@@ -1,7 +1,17 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Modal } from 'components/Modal/Modal';
-import { Component } from 'react';
+import { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+
+// export const ImageGallery = () => {
+//   const [isModalShow, setIsModalShow] = useState(false);
+//   const [largeImageURL, setLargImageUrl] = useState('');
+//   const [tags, setTags] = useState('');
+// }
+
+// useEffect(() => {});
+
+// const handleToggle = (largeImageURL, tags) =>{}
 
 export class ImageGallery extends Component {
   state = {
